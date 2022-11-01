@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>walker_6dof_grasping</name>
+    <version>0.1.0</version>
+    <description>6-DoF Multi-fingered Grasping of WalkerII Humanoid Service Robot</description>
+
+    <maintainer email="li_zhuo@hust.edu.cn">Zhuo Li</maintainer>
+
+    <license>BSD</license>
+    <url>https://github.com/ethz-asl/vgn</url>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <depend>rospy</depend>
+</package>

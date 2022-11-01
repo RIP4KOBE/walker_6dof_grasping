@@ -1,0 +1,1 @@
+controller_joint_names: ['right_thumb_j1', 'right_thumb_j2', 'right_index_j1', 'right_index_j2', 'right_middle_j1', 'right_middle_j2', 'right_ring_j1', 'right_ring_j2', 'right_pinky_j1', 'right_pinky_j2', 'left_thumb_j1', 'left_thumb_j2', 'left_index_j1', 'left_index_j2', 'left_middle_j1', 'left_middle_j2', 'left_ring_j1', 'left_ring_j2', 'left_pinky_j1', 'left_pinky_j2']

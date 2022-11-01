@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot
+  name="walkerx_rhand">
+  <link
+    name="rhandbase_link">
+    <inertial>
+      <origin
+        xyz="-0.377843 -0.239831 -0.010788"
+        rpy="0 0 0" />
+      <mass
+        value="0.593" />
+      <inertia
+        ixx="1.30E-03"
+        ixy="2.47E-04"
+        ixz="-1.57E-05"
+        iyy="5.23E-04"
+        iyz="-1.29E-05"
+        izz="1.06E-03" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rhandbase.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.378 -0.24 -0.009"
+        rpy="0 0 -0.261799" />
+      <geometry>
+        <box size = "0.05 0.14 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="rfirstfinger1_1">
+    <inertial>
+      <origin
+        xyz="0.016949 -0.005689 -0.0016081"
+        rpy="0 0 0" />
+      <mass
+        value="0.001" />
+      <inertia
+        ixx="1.0E-09"
+        ixy="1.0E-09"
+        ixz="1.0E-09"
+        iyy="1.0E-09"
+        iyz="1.0E-09"
+        izz="1.0E-09" />
+    </inertial>    
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfirst1_1"
+    type="revolute">
+    <origin
+      xyz="-0.36621 -0.23404 0.01213"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rfirstfinger1_1" />
+    <axis
+      xyz="-0.068161 -0.99767 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfirstfinger1_2">
+    <inertial>
+      <origin
+        xyz="0.016949 -0.005689 -0.0016081"
+        rpy="0 0 0" />
+      <mass
+        value="0.001" />
+      <inertia
+        ixx="1.0E-09"
+        ixy="1.0E-09"
+        ixz="1.0E-09"
+        iyy="1.0E-09"
+        iyz="1.0E-09"
+        izz="1.0E-09" />
+    </inertial>    
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfirst1_2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="rfirstfinger1_1" />
+    <child
+      link="rfirstfinger1_2" />
+    <axis
+      xyz="0.99767 -0.068161 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfirstfinger1_3">
+    <inertial>
+      <origin
+        xyz="0.016949 -0.005689 -0.0016081"
+        rpy="0 0 0" />
+      <mass
+        value="0.033" />
+      <inertia
+        ixx="2.55E-06"
+        ixy="-1.98E-06"
+        ixz="1.06E-06"
+        iyy="1.24E-05"
+        iyz="-3.55E-07"
+        izz="1.27E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.36621 0.23404 -0.01213"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rfirstfinger1.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.03021 -0.00796 -0.00013"
+        rpy="1.5708 0 1.2" />
+      <geometry>
+        <cylinder radius="0.011" length="0.046" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfirst1_3"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="rfirstfinger1_2" />
+    <child
+      link="rfirstfinger1_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfirstfinger2">
+    <inertial>
+      <origin
+        xyz="0.012578 -0.0046607 -0.0095932"
+        rpy="0 0 0" />
+      <mass
+        value="0.012856" />
+      <inertia
+        ixx="9.85E-07"
+        ixy="-4.99E-07"
+        ixz="-1.00E-09"
+        iyy="2.29E-06"
+        iyz="0.0"
+        izz="2.48E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.318125 0.247745 -0.02173"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rfirstfinger2.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.014125 -0.00426 -0.00973"
+        rpy="1.5708 0 1.2" />
+      <geometry>
+        <cylinder radius="0.011" length="0.033" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfirst2"
+    type="revolute">
+    <origin
+      xyz="0.048085 -0.013705 0.0096"
+      rpy="0 0 0" />
+    <parent
+      link="rfirstfinger1_3" />
+    <child
+      link="rfirstfinger2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rsecondfinger1">
+    <inertial>
+      <origin
+        xyz="0.0016093 -0.0062649 0.0089807"
+        rpy="0 0 0" />
+      <mass
+        value="0.02621" />
+      <inertia
+        ixx="1.25E-05"
+        ixy="-1.71E-06"
+        ixz="3.00E-09"
+        iyy="1.34E-06"
+        iyz="-1.20E-08"
+        izz="1.28E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.38785 0.3148 -0.01693"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rsecondfinger1.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.00385 -0.0202 0.008982"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.0505" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rsecond1"
+    type="revolute">
+    <origin
+      xyz="-0.38785 -0.3148 0.01693"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rsecondfinger1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rsecondfinger2">
+    <inertial>
+      <origin
+        xyz="0.0013967 -0.0098864 -0.0085299"
+        rpy="0 0 0" />
+      <mass
+        value="0.0077518" />
+      <inertia
+        ixx="9.79E-07"
+        ixy="-1.17E-07"
+        ixz="1.00E-09"
+        iyy="3.68E-07"
+        iyz="-2.00E-09"
+        izz="1.00E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.3811324 0.353725 -0.03443"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rsecondfinger2.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.002232 -0.00977 -0.00853"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rsecond2"
+    type="revolute">
+    <origin
+      xyz="0.0067176 -0.038925 0.0175"
+      rpy="0 0 0" />
+    <parent
+      link="rsecondfinger1" />
+    <child
+      link="rsecondfinger2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rthirdfinger1">
+    <inertial>
+      <origin
+        xyz="0.0016093 -0.0062648 0.0089807"
+        rpy="0 0 0" />
+      <mass
+        value="0.02621" />
+      <inertia
+        ixx="1.25E-05"
+        ixy="-1.71E-06"
+        ixz="3.00E-09"
+        iyy="1.34E-06"
+        iyz="-1.20E-08"
+        izz="1.28E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.39021 0.32349 0.0097698"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rthirdfinger1.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.00321 -0.01951 0.008982"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.0505" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rthird1"
+    type="revolute">
+    <origin
+      xyz="-0.39021 -0.32349 -0.0097698"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rthirdfinger1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rthirdfinger2">
+    <inertial>
+      <origin
+        xyz="0.00139671105362882 -0.00988639056498997 -0.00852984415019046"
+        rpy="0 0 0" />
+      <mass
+        value="0.00775190710725793" />
+      <inertia
+        ixx="9.79E-07"
+        ixy="-1.17E-07"
+        ixz="1.00E-09"
+        iyy="3.68E-07"
+        iyz="-2.00E-09"
+        izz="1.00E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.3834924 0.362415 -0.0077302"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rthirdfinger2.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.001399 -0.00988 -0.00853"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rthird2"
+    type="revolute">
+    <origin
+      xyz="0.0067176 -0.038925 0.0175"
+      rpy="0 0 0" />
+    <parent
+      link="rthirdfinger1" />
+    <child
+      link="rthirdfinger2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfourthfinger1">
+    <inertial>
+      <origin
+        xyz="0.0016091 -0.0062651 0.0089807"
+        rpy="0 0 0" />
+      <mass
+        value="0.02621" />
+      <inertia
+        ixx="1.25E-05"
+        ixy="-1.71E-06"
+        ixz="3.00E-09"
+        iyy="1.34E-06"
+        iyz="-1.20E-08"
+        izz="1.28E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.38926 0.32001 0.03277"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rfourthfinger1.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.00326 -0.01899 0.008982"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.0505" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfourth1"
+    type="revolute">
+    <origin
+      xyz="-0.38926 -0.32001 -0.03277"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rfourthfinger1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfourthfinger2">
+    <inertial>
+      <origin
+        xyz="0.0014007 -0.0098858 -0.0085299"
+        rpy="0 0 0" />
+      <mass
+        value="0.0077518" />
+      <inertia
+        ixx="9.79E-07"
+        ixy="-1.17E-07"
+        ixz="1.00E-09"
+        iyy="3.68E-07"
+        iyz="-2.00E-09"
+        izz="1.00E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.3825424 0.358935 0.01527"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rfourthfinger2.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.001397 -0.00989 -0.00853"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfourth2"
+    type="revolute">
+    <origin
+      xyz="0.0067176 -0.038925 0.0175"
+      rpy="0 0 0" />
+    <parent
+      link="rfourthfinger1" />
+    <child
+      link="rfourthfinger2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfifthfinger1">
+    <inertial>
+      <origin
+        xyz="0.001609 -0.006244 0.008981"
+        rpy="0 0 0" />
+      <mass
+        value="0.026" />
+      <inertia
+        ixx="1.25E-05"
+        ixy="-1.71E-06"
+        ixz="3.00E-09"
+        iyy="1.34E-06"
+        iyz="-1.20E-08"
+        izz="1.28E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.3855 0.31378 0.05577"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rfifthfinger1.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.0035 -0.01922 0.008982"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.0505" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfifth1"
+    type="revolute">
+    <origin
+      xyz="-0.3855 -0.31378 -0.05577"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rfifthfinger1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+  <link
+    name="rfifthfinger2">
+    <inertial>
+      <origin
+        xyz="0.0014006 -0.0098858 -0.0085299"
+        rpy="0 0 0" />
+      <mass
+        value="0.0077518" />
+      <inertia
+        ixx="9.79E-07"
+        ixy="-1.17E-07"
+        ixz="1.00E-09"
+        iyy="3.68E-07"
+        iyz="-2.00E-09"
+        izz="1.00E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.3787824 0.352705 0.03827"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://walkerx_rhand/meshes/rfifthfinger2.obj" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.001404 -0.00989 -0.00853"
+        rpy="1.5708 0 0.18" />
+      <geometry>
+        <cylinder radius="0.011" length="0.033" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfifth2"
+    type="revolute">
+    <origin
+      xyz="0.0067176 -0.038925 0.0175"
+      rpy="0 0 0" />
+    <parent
+      link="rfifthfinger1" />
+    <child
+      link="rfifthfinger2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="0.1" />
+  </joint>
+</robot>

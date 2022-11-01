@@ -1,0 +1,12 @@
+<launch>
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="torsobase_cam2depth_broadcaster" args="0.2866, -0.1355, 0.752  -0.7138, -0.6651, -0.1878, 0.1124 torsobase_link rs2_depth_optical_frame" />
+
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="torsobase_pregrasp_broadcaster" args=" 0.3676 0.3611 0.0021 -0.6873 0.5404 0.1451 0.4631 torsobase_link pregrasp_local_frame" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="torsobase_grasp_broadcaster" args=" 0.3812 0.3309 -0.0353  -0.6873 0.5404 0.1451 0.4631 torsobase_link grasp_local_frame" />
+
+</launch>
+
+

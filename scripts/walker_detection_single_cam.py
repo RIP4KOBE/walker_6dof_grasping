@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Real-time Walker2 6-DOF Grasp Detection (static calibration).
+Real-time Walker2 6-DOF Grasp Detection (Perception with one camera).
 """
 
 import argparse
@@ -38,8 +38,7 @@ class GraspDetectionServer(object):
     # define camera parameters
         self.cam2_topic_name = "/rs2/depth/image_rect_raw"
         self.cam2_frame_id = "rs2_depth_optical_frame"
-        self.cam2_intrinsic = CameraIntrinsic(848, 480, 431.64550, 431.64550, 423.291107, 242.331)
-
+        self.cam2_intrinsic = CameraIntrinsic(848, 480, 427.21884155, 427.218841, 428.857727, 244.4386291)
 
     #define trasnformation between TSDF(task) frame and table_marker frame
         self.T_tablemarker_task = Transform(Rotation.from_quat([-0.707, 0, 0,  0.707]), [0, 0, 0])#the T_offset between the coordinate tablemarker and the coordinate task,obtained by adjustment
@@ -61,10 +60,9 @@ class GraspDetectionServer(object):
         # rospy.Subscriber("/realsense/aruco_single_rs2/pose", PoseStamped, self.rs2Pose_cb)
 
     # #subscribe marker pose(static)
-        self.T_cam2depth_tablemarker = Transform(Rotation.from_quat([-0.32216627, -0.36886741, 0.718320528, 0.4941268]), [-0.0879635, -0.1915541, 0.74092569])
+        self.T_cam2depth_tablemarker = Transform(Rotation.from_quat([-0.535437, -0.4166321, 0.5700561, 0.4634222]), [0.0164192, -0.07395102, 0.6705975])
         self.T_cam2depth_task = self.T_cam2depth_tablemarker * self.T_tablemarker_task
         self.tf_tree_cam2.broadcast_static(self.T_cam2depth_task, self.cam2_frame_id, self.task_frame_id)
-
 
 
     # setup cb to detect grasps
@@ -174,7 +172,7 @@ class GraspDetectionServer(object):
         T_task_grasp = grasp.pose
 
         #transformation of hand-eye calibration
-        T_torsobaselink_cam2link =  Transform(Rotation.from_quat([0.592001, -0.111603, -0.7916279, 0.1020001]), [0.58152625, 0.455386, 0.284217])
+        T_torsobaselink_cam2link =  Transform(Rotation.from_quat([0.6091913, -0.02083, -0.791442328, 0.045508183]), [0.60521659, 0.10646108, 0.3354131])
 
         T_cam2link_cam2depth = self.tf_tree_cam2.lookup(
             "rs2_link", "rs2_depth_optical_frame", rospy.Time(0), rospy.Duration(0.1)

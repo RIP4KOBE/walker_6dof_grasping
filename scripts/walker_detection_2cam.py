@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Real-time Walker2 6-DOF Grasp Detection (static calibration).
+Real-time Walker2 6-DOF Grasp Detection (Perception with two cameras).
 """
 
 import argparse
@@ -242,6 +242,6 @@ if __name__ == "__main__":
     parser.add_argument("--model", type=Path, required=True)
     args = parser.parse_args()
 
-    rospy.init_node("walker__grasp_detection")
+    rospy.init_node("walker_grasp_detection_two_cam")
     GraspDetectionServer(args.model)
     rospy.spin()

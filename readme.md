@@ -38,7 +38,7 @@ sudo apt install libopenmpi-dev
 Clone the repository into the `src` folder of a catkin workspace.
 
 ```
-git clone https://github.com/ethz-asl/vgn
+git clone https://github.com/RIP4KOBE/walker-6dof-grasping.git
 ```
 
 Create and activate a new virtual environment.
@@ -65,8 +65,6 @@ gedit ~/.bashrc
 export PYTHONPATH="/path/to/walker_6dof_grasping/src"
 ```
 
-Finally, download the data folder [here](https://drive.google.com/file/d/1MnWwxkYo9WnLFNseEVSWRT1q-XElYlxJ/view?usp=sharing), then unzip and place it in the repo's root.
-
 ## Data Generation
 
 ### Raw Data Generation
@@ -91,7 +89,7 @@ The script will create the following file structure within `data/raw/foo`:
 python scripts/raw_grasp_data_clean.py
 ```
 
-The script is useful to clean and balance the generated data.
+The script is useful to clean and balance the generated grasp data.
 
 ### Dataset Construction
 
@@ -128,7 +126,6 @@ python scripts/sim_grasp.py --model data/models/walker2_model/gpn_conv_1545.pt -
 ```
 cd /path/to/walker_6dof_grasping/config/
 rviz -d sim.rviz
-
 ```
 * Use the `clutter_removal.ipynb` notebook to compute metrics and visualize failure cases of an experiment.
 
@@ -152,47 +149,46 @@ This section contains the implementation of our method on physical WalkerII huma
 First, you need to start the WalkerII robot with the following conmands:
 
 - launch walker_control
-   ```
-   ssh walker2@192.168.11.2
-   aa
-   sudo -s
-   roslaunch walker_control walker_control.launch 
-   ```
+```
+ssh walker2@192.168.11.2
+aa
+sudo -s
+roslaunch walker_control walker_control.launch 
+```
 - launch whole_body_control
-   ```
-   ssh walker2@192.168.11.2
-   aa
-   sudo -s
-   aa
-   cd ~/run
-   ./autorun.sh
-   ```
+```
+ssh walker2@192.168.11.2
+aa
+sudo -s
+aa
+cd ~/run
+./autorun.sh
+```
 -  launch service
-   ```
-   rosservice call /walker/controller/enable "data: true"
-   ```
+```
+rosservice call /walker/controller/enable "data: true"
+ ```
 -  launch legs
-   ```
-   ssh walker2@192.168.11.2
-   aa
-   sudo -s
-   aa
-   roslaunch leg_motion walker2_leg.launch
-   ```
+```
+ssh walker2@192.168.11.2
+aa
+sudo -s
+aa
+roslaunch leg_motion walker2_leg.launch
+```
 
 ### Hand-eye Calibration
-Next, Using [easy_handeye](https://github.com/IFL-CAMP/easy_handeye) package to perform the hand-eye calibration. Or you can use other hand-eye calibration methods, as long as you get the correct transformation relationship between the robot hand coordinate and the camera coordinate. In our case, we use the following workflow:
-
+Next, Using [easy_handeye](https://github.com/IFL-CAMP/easy_handeye) package to perform the hand-eye calibration (Note that you can use other hand-eye calibration methods, as long as you get the correct transformation relationship between the robot hand coordinate and the camera coordinate): 
 - Attach the Aruco Marker to the palm of the robot hand.
 - Launch the camera
 ```
-	cd path/to/realsense_ros
-	roslaunch realsense2_camera rs2_camera.launch
+cd path/to/realsense_ros
+roslaunch realsense2_camera rs2_camera.launch
 ```
 - Launch easy_handeye
 ```
-	cd path/to/easy_handeye
-	roslaunch easy_handeye walker_aruco_calib_realsense.launch
+cd path/to/easy_handeye
+roslaunch easy_handeye walker_aruco_calib_realsense.launch
 ```
 - Sampling around 20 group of poses and recording the trasnformation matrix
 
@@ -200,34 +196,33 @@ Next, Using [easy_handeye](https://github.com/IFL-CAMP/easy_handeye) package to 
 ### Grasp Prediction
 - Launch the camera
 ```
-	cd path/to/realsense_ros
-	roslaunch realsense2_camera rs2_camera.launch
+cd path/to/realsense_ros
+roslaunch realsense2_camera rs2_camera.launch
 ```
 - Predicting Feasible Grasps
 ```
-	cd path/to/vgn
-	source .venv/bin/activate
-	python scripts/walker_detection_single_cam.py --model data/models/walker2_model/vgn_conv_1545.pt 
+cd path/to/walker_6dof_grasping
+source .venv/bin/activate
+python scripts/walker_detection_single_cam.py --model data/models/walker2_model/vgn_conv_1545.pt 
 ```
 - Visualizing Prediction Results
 ```
-	cd path/to/vgn/config
-	rviz -d sim.rviz 
-
+cd path/to/walker_6dof_grasping/config
+rviz -d sim.rviz 
 ```
 ### Grasp Execution
-- Starting IK-solver and Publishing Reachable Grasps
+- IK Solving and Reachable Grasps Publishing 
 ```
-	cd path/to/walker_kinematics_solver
-	rosrun grasp_pose_ik_solver
+cd path/to/walker_kinematics_solver
+rosrun grasp_pose_ik_solver
 ```
 
 - Grasp Execution
 ```
-   cd path/to/walker_kinematics_solver
-	rosrun walker_grasp
+cd path/to/walker_kinematics_solver
+rosrun walker_grasp
 ```
-Remember to set the motion_segment flag as true when you first running the walker_grasp code
+Remember to set the motion_segment flag as true when you first run the walker_grasp.cpp
 ```
 line 548 bool motion_segment0 = true;
 ```

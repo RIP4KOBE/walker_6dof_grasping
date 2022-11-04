@@ -18,7 +18,7 @@ class ClutterRemovalSim(object):
 
         self.urdf_root = Path("data/urdfs/")
         self.scene = scene
-        self.object_set = "packed/walker2_packed_train/"
+        self.object_set = object_set
         self.discover_objects()
 
         self.global_scaling = 1.0

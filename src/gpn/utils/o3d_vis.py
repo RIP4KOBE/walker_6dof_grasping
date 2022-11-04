@@ -1,6 +1,6 @@
 import numpy as np
 import open3d as o3d
-from vgn.utils.transform import Rotation, Transform
+from gpn.utils.transform import Rotation, Transform
 
 
 def create_arrow(begin, end):

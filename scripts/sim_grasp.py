@@ -35,7 +35,7 @@ if __name__ == "__main__":
     parser.add_argument("--description", type=str, default="")
     parser.add_argument("--scene", type=str, choices=["pile", "packed"], default="packed")
     parser.add_argument("--object-set", type=str, default="packed/walker2_packed_train/")
-    parser.add_argument("--num-objects", type=int, default=3)
+    parser.add_argument("--num-objects", type=int, default=1)
     parser.add_argument("--num-rounds", type=int, default=40)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--sim-gui", action="store_true")

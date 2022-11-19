@@ -38,7 +38,7 @@ sudo apt install libopenmpi-dev
 Clone the repository into the `src` folder of a catkin workspace.
 
 ```
-git clone https://github.com/RIP4KOBE/walker-6dof-grasping.git
+git clone https://github.com/RIP4KOBE/walker_6dof_grasping.git
 ```
 
 Create and activate a new virtual environment.

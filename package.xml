@@ -7,7 +7,7 @@
     <maintainer email="li_zhuo@hust.edu.cn">Zhuo Li</maintainer>
 
     <license>BSD</license>
-    <url>https://github.com/ethz-asl/vgn</url>
+    <url>https://github.com/RIP4KOBE/walker_6dof_grasping.git</url>
 
     <buildtool_depend>catkin</buildtool_depend>
 

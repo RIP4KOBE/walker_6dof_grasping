@@ -52,7 +52,7 @@ source .venv/bin/activate
 Install the Python dependencies within the activated virtual environment.
 
 ```
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 Build and source the catkin workspace,
